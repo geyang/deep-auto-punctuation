@@ -21,9 +21,9 @@ capitalization: <cap>
 
 If you feel like using some of the code, you can cite this project via
 
-```
+```bib
 @article{deeppunc,
-  title={Deep Auto-Punctuation},
+  title={Deep-Auto-Punctuation},
   author={Yang, Ge},
   journal={arxiv},
   year={2017},
