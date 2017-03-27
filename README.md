@@ -21,7 +21,7 @@ capitalization: <cap>
 
 If you feel like using some of the code, you can cite this project via
 
-```json
+```
 @article{deeppunc,
   title={Deep Auto-Punctuation},
   author={Yang, Ge},
