@@ -1,4 +1,6 @@
-# Learning Auto-Punctuation by Reading Engadget Articles
+# Learning Auto-Punctuation by Reading Engadget Articles 
+
+[![DOI](https://zenodo.org/badge/86387963.svg)](https://zenodo.org/badge/latestdoi/86387963)
 
 ## Overview
 
@@ -16,6 +18,20 @@ capitalization: <cap>
 ```
 
 ## Usage
+
+If you feel like using some of the code, you can cite this project via
+
+```json
+@article{deeppunc,
+  title={Deep Auto-Punctuation},
+  author={Yang, Ge},
+  journal={arxiv},
+  year={2017},
+  doi={10.5281/zenodo.438358}
+  url={https://zenodo.org/record/438358;
+       https://github.com/episodeyang/deep-auto-punctuation}
+}
+```
 
 ### To run
 
