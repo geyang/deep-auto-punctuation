@@ -60,13 +60,14 @@ The initial setup I began with was a single uni-direction GRU, with input domain
 The entire dataset is composed of around 50k blog posts from engadget. I randomly selected 49k of these as my training set, 50 as my validation set, and around 0.5k as my test set. The training is a bit slow on an Intel i7 desktop, averaging 1.5s/file depending on the length of the file. As a result, it takes about a day to go through the entire training set.
 
 ## Todo:
-- [ ] add validation (after the first epoch)
-- [ ] add test to bottom of the notebook
+- [ ] execute test after training
 
 ## Done:
-- [x] get data
-- [x] change to bi-directional GRU
+- [x] a generative demo
+- [x] add validation (once an hour or so)
 - [x] add accuracy metric, use precision/recall.
+- [x] change to bi-directional GRU
+- [x] get data
 - [x] Add temperature to generator
 - [x] add self-feeding generator
 - [x] get training to work
