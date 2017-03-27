@@ -32,9 +32,9 @@ and then open up the notebook [Learning Punctuations by reading Engadget.pynb](L
 pytorch numpy matplotlib tqdm bs4
 ```
 
-## Setup and Considerations
+## Model Setup and Considerations
 
-The initial setup I began with was a single uni-direction GRU, with input domain [A-z0-9] and output domain of the ops listed above. My hope at that time was to simply train the RNN to learn correcponding operations. A few things jumped out of the experiment:
+The initial setup I began with was a single uni-direction GRU, with input domain [A-z0-9] and output domain of the ops listed above. My hope at that time was to simply train the RNN to learn correcponding operations. A few things jumped out during the experiment:
 
 1. **Use bi-directional GRU.** with the uni-direction GRU, the network quickly learned capitalization of terms, but it had difficulties with single quote. In words like "I'm", "won't", there are simply too much ambiguity from reading only the forward part of the word. The network didn't have enough information to properly infer such punctuations.
     
