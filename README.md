@@ -15,6 +15,23 @@ capitalization: <cap>
   no operation: <nop>
 ```
 
+## Usage
+
+### To run
+
+First unzip the engagdget data into folder `./engadget_data` by running
+```sh
+tar -xvzf engadget_data.tar.gz
+```
+
+and then open up the notebook [Learning Punctuations by reading Engadget.pynb](Learning%20Punctuations%20by%20reading%20Engadget.ipynb#Learning-Auto-Punctuation-by-Reading-Engadget-Articles), and you can just execute.
+
+### Requirements
+
+```
+pytorch numpy matplotlib tqdm bs4
+```
+
 ## Setup and Considerations
 
 The initial setup I began with was a single uni-direction GRU, with input domain [A-z0-9] and output domain of the ops listed above. My hope at that time was to simply train the RNN to learn correcponding operations. A few things jumped out of the experiment:
