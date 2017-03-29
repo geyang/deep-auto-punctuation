@@ -64,12 +64,35 @@ class Char2Vec():
 
         return y_onehot
 
+    def one_hot_batch(self, sources):
+        """
+        source: (seq_length * batch_n)
+        output: (seq_length * batch_n * input_width)
+        """
+        source_shape = [len(sources), len(sources[0])]
+        y = torch.LongTensor([[[self.get_ind(char)] for char in src] for src in sources])
+        y_onehot = torch.zeros(len(sources), len(sources[0]), self.size)
+        y_onehot.scatter_(2, y, 1)
+
+        return y_onehot
+
     def char_code(self, source):
         return torch.LongTensor([self.char_dict[char] for char in source])
+
+    def char_code_batch(self, batch):
+        return torch.LongTensor([[self.char_dict[char] for char in seq] for seq in batch])
 
     def vec2list(self, vec):
         chars = [self.chars[ind] for ind in vec.cpu().data.numpy()]
         return chars
+
+    def vec2list_batch(self, vec):
+        chars = [[self.chars[ind] for ind in row] for row in vec.cpu().data.numpy()]
+        return chars
+
+
+def flatten(l):
+    return [item for sublist in l for item in sublist]
 
 
 if __name__ == "__main__":
