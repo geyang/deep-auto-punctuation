@@ -2,8 +2,7 @@ author=$(Ge Yang)
 author_email=$(yangge1987@gmail.com)
 
 default:
-	unzip
-
+	make unzip
 unzip:
 	mkdir engadget_data
 	tar -xvzf engadget_data.tar.gz ./engadget_data

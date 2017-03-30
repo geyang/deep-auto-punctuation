@@ -92,4 +92,4 @@ for epoch_num in range(24):
             print(result)
 
     # print('Dev Set Performance {:d}'.format(epoch_num))
-    egdt.save('./data/engadget_train_epoch-{}_batch-{}.tar'.format(epoch_num + 1, batch_ind))
+    egdt.save('./data/engadget_train_epoch-{}_batch-{}.tar'.format(epoch_num + 1, batch_ind + 1))
