@@ -1,6 +1,6 @@
 # Learning Auto-Punctuation by Reading Engadget Articles 
 
-[![DOI](https://zenodo.org/badge/86387963.svg)](https://zenodo.org/badge/latestdoi/86387963)
+[![DOI](https://zenodo.org/badge/86387963.svg)](https://zenodo.org/badge/latestdoi/86387963) [![](https://img.shields.io/badge/link_on-GitHub-brightgreen.svg?style=flat-square)](https://github.com/episodeyang/deep-auto-punctuation)
 
 ## Overview
 
@@ -47,7 +47,7 @@ To view the reporting, open a `visdom` server by running
 ```
 python visdom.server
 ```
-and then go to `localhost:8097
+and then go to http://localhost:8097
 
 
 ### Requirements
@@ -117,10 +117,11 @@ The initial setup I began with was a single uni-direction GRU, with input domain
 The entire dataset is composed of around 50k blog posts from engadget. I randomly selected 49k of these as my training set, 50 as my validation set, and around 0.5k as my test set. The training is a bit slow on an Intel i7 desktop, averaging 1.5s/file depending on the length of the file. As a result, it takes about a day to go through the entire training set.
 
 ## Todo:
-- [ ] execute demo test after training
-- [ ] add final performance metric
+All done.
 
 ## Done:
+- [x] execute demo test after training
+- [x] add final performance metric
 - [x] implement minibatch
 - [x] a generative demo
 - [x] add validation (once an hour or so)
@@ -131,6 +132,12 @@ The entire dataset is composed of around 50k blog posts from engadget. I randoml
 - [x] add self-feeding generator
 - [x] get training to work
 - [x] use optim and Adam
+
+## References
+1: https://www.aclweb.org/anthology/D/D16/D16-1111.pdf  
+2: https://phon.ioc.ee/dokuwiki/lib/exe/fetch.php?media=people:tanel:interspeech2015-paper-punct.pdf  
+3: https://en.wikipedia.org/wiki/precision_and_recall  
+4: https://en.wikipedia.org/wiki/F1_score  
 
 ## References
 1: https://www.aclweb.org/anthology/D/D16/D16-1111.pdf  
