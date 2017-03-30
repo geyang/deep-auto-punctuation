@@ -39,8 +39,26 @@ After 24 epochs of training, the network achieves the following performance on t
     Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
 ```
 As a frist attempt, the performance is pretty good! Especially since I didn't fine train with a smaller step size afterward, and the engadget dataset used here is small in size (4MB total).
-   
 
+Double the training gives a small improvement. 
+
+*Table 2. After 48 epochs of training*
+
+```
+    Test P/R  Epoch 48 Batch 380
+    =================================
+    Key: <nop>	Prec:  97.1%	Recall:  98.0%	F-Score:  97.6%
+    Key: <cap>	Prec:  73.2%	Recall:  58.9%	F-Score:  65.3%
+    Key:   ,	Prec:  35.7%	Recall:  32.2%	F-Score:  33.9%
+    Key:   .	Prec:  45.0%	Recall:  39.7%	F-Score:  42.2%
+    Key:   '	Prec:  81.7%	Recall:  83.4%	F-Score:  82.5%
+    Key:   :	Prec:  12.1%	Recall:  10.8%	F-Score:  11.4%
+    Key:   "	Prec:  25.2%	Recall:  44.8%	F-Score:  32.3%
+    Key:   $	Prec:  51.4%	Recall:  87.8%	F-Score:  64.9%
+    Key:   ;	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   ?	Prec:   5.6%	Recall:   4.8%	F-Score:   5.1%
+    Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+```
 ## Usage
 
 If you feel like using some of the code, you can cite this project via
