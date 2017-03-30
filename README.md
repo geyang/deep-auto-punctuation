@@ -4,7 +4,8 @@
 
 ## Overview
 
-This project trains a bi-directional GRU to learn how to automatically punctuate a sentence by reading it character by character. The set of operation it learns include:
+This project trains a bi-directional GRU to learn how to automatically punctuate a sentence by reading blog posts from Engadget.com character by character. The set of operation it learns include:
+
 ```
 capitalization: <cap>
          comma:  ,
@@ -16,6 +17,29 @@ capitalization: <cap>
   double quote:  "
   no operation: <nop>
 ```
+
+### Performance
+
+
+After 24 epochs of training, the network achieves the following performance on the test-set:
+
+```
+    Test P/R After 24 Epochs 
+    =================================
+    Key: <nop>	Prec:  97.1%	Recall:  97.8%	F-Score:  97.4%
+    Key: <cap>	Prec:  68.6%	Recall:  57.8%	F-Score:  62.7%
+    Key:   ,	Prec:  30.8%	Recall:  30.9%	F-Score:  30.9%
+    Key:   .	Prec:  43.7%	Recall:  38.3%	F-Score:  40.8%
+    Key:   '	Prec:  76.9%	Recall:  80.2%	F-Score:  78.5%
+    Key:   :	Prec:  10.3%	Recall:   6.1%	F-Score:   7.7%
+    Key:   "	Prec:  26.9%	Recall:  45.1%	F-Score:  33.7%
+    Key:   $	Prec:  64.3%	Recall:  61.6%	F-Score:  62.9%
+    Key:   ;	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   ?	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+```
+As a frist attempt, the performance is pretty good! Especially since I didn't fine train with a smaller step size afterward, and the engadget dataset used here is small in size (4MB total).
+   
 
 ## Usage
 
@@ -85,22 +109,21 @@ The initial setup I began with was a single uni-direction GRU, with input domain
 
 5. **Using Precision/Recall in a multi-class scenario**. The setup makes the reasonable assumption that each operation can only be applied mutually exclusively. The accuracy metric used here are **precision/recall** and the **F-score**, both commonly used in the literature<sup>1,</sup> <sup>2</sup>. The P/R and F-score are implemented according to wikipedia <sup>3,</sup> <sup>4</sup>.
     
-    example accuracy output:
+    example accuracy report:
     
     ```
-    Epoch 24 Batch 760 Test P/R
+    Epoch 0 Batch 400 Test P/R
     =================================
-    Key: <nop>	Prec:  97.1%	Recall:  97.8%	F-Score:  97.4%
-    Key: <cap>	Prec:  68.6%	Recall:  57.8%	F-Score:  62.7%
-    Key:   ,	Prec:  30.8%	Recall:  30.9%	F-Score:  30.9%
-    Key:   .	Prec:  43.7%	Recall:  38.3%	F-Score:  40.8%
-    Key:   '	Prec:  76.9%	Recall:  80.2%	F-Score:  78.5%
-    Key:   :	Prec:  10.3%	Recall:   6.1%	F-Score:   7.7%
-    Key:   "	Prec:  26.9%	Recall:  45.1%	F-Score:  33.7%
-    Key:   $	Prec:  64.3%	Recall:  61.6%	F-Score:  62.9%
-    Key:   ;	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
-    Key:   ?	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
-    Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key: <nop>	Prec:  99.1%	Recall:  96.6%	F-Score:  97.9%
+    Key:   ,	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key: <cap>	Prec: 100.0%	Recall:  75.0%	F-Score:  85.7%
+    Key:   .	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   '	Prec:  66.7%	Recall: 100.0%	F-Score:  80.0%
+
+
+    true_p:	{'<nop>': 114, '<cap>': 3, "'": 2}
+    p:	{'<nop>': 118, '<cap>': 4, "'": 2}
+    all_p:	{'<nop>': 115, ',': 2, '<cap>': 3, '.': 1, "'": 3}
     
     400it [06:07,  1.33s/it]
     ```
