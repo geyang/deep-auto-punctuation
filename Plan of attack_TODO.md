@@ -1,4 +1,9 @@
-Plan of attack (todo list)
+# Plan of attack (todo list)
+
+## Todo
+- [ ] the performance is okay'ish. Might want to try attention, or convolutional layer?
+
+## Done
 
 - [x] work on scraping the internet, and generate punctuation and capitalization operations.
     - [x] scrape engadget
