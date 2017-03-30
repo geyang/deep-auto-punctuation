@@ -42,6 +42,14 @@ tar -xvzf engadget_data.tar.gz
 
 and then open up the notebook [Learning Punctuations by reading Engadget.pynb](Learning%20Punctuations%20by%20reading%20Engadget.ipynb#Learning-Auto-Punctuation-by-Reading-Engadget-Articles), and you can just execute.
 
+
+To view the reporting, open a `visdom` server by running
+```
+python visdom.server
+```
+and then go to `localhost:8097
+
+
 ### Requirements
 
 ```
@@ -78,24 +86,42 @@ The initial setup I began with was a single uni-direction GRU, with input domain
 5. **Using Precision/Recall in a multi-class scenario**. The setup makes the reasonable assumption that each operation can only be applied mutually exclusively. The accuracy metric used here are **precision/recall** and the **F-score**, both commonly used in the literature<sup>1,</sup> <sup>2</sup>. The P/R and F-score are implemented according to wikipedia <sup>3,</sup> <sup>4</sup>.
     
     example accuracy output:
+    
     ```
-    Key: <nop>	Prec:  98.9%	Recall:  97.8%	F-Score:  98.4%
-    Key:   ,	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
-    Key: <cap>	Prec: 100.0%	Recall:  60.0%	F-Score:  75.0%
-    Key:   .	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
-    Key:   '	Prec:  66.7%	Recall: 100.0%	F-Score:  80.0%
+    Epoch 24 Batch 760 Test P/R
+    =================================
+    Key: <nop>	Prec:  97.1%	Recall:  97.8%	F-Score:  97.4%
+    Key: <cap>	Prec:  68.6%	Recall:  57.8%	F-Score:  62.7%
+    Key:   ,	Prec:  30.8%	Recall:  30.9%	F-Score:  30.9%
+    Key:   .	Prec:  43.7%	Recall:  38.3%	F-Score:  40.8%
+    Key:   '	Prec:  76.9%	Recall:  80.2%	F-Score:  78.5%
+    Key:   :	Prec:  10.3%	Recall:   6.1%	F-Score:   7.7%
+    Key:   "	Prec:  26.9%	Recall:  45.1%	F-Score:  33.7%
+    Key:   $	Prec:  64.3%	Recall:  61.6%	F-Score:  62.9%
+    Key:   ;	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   ?	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
+    
+    400it [06:07,  1.33s/it]
     ```
     
-6. **Hidden Layer initialization**: In the past I've found it was easier for the neural network to generate good results when both the training and the generation starts with a zero initial state. In this case because we are computing time limited, I zero the hidden layer at the begining of each file. 
+6. **Hidden Layer initialization**: In the past I've found it was easier for the neural network to generate good results when both the training and the generation starts with a zero initial state. In this case because we are computing time limited, I zero the hidden layer at the begining of each file.
+
+7. **Mini-batches and Padding**: During training, I first sort the entire training set by the length of each file (there are 45k of them) and arrange them in batches, so that files inside each batch are roughly similar size, and only minimal padding is needed. Sometimes the file becomes too long. In that case I use `data.fuzzy_chunk_length()` to calculate a good chunk length with heuristics. The result is mostly no padding during most of the trainings.
+    
+    Going from having no mini-batch to having a minibatch of 128, the time per batch hasn't changed much. The accuracy report above shows the training result after 24 epochs.
+
 
 ## Data and Cross-Validation
 
 The entire dataset is composed of around 50k blog posts from engadget. I randomly selected 49k of these as my training set, 50 as my validation set, and around 0.5k as my test set. The training is a bit slow on an Intel i7 desktop, averaging 1.5s/file depending on the length of the file. As a result, it takes about a day to go through the entire training set.
 
 ## Todo:
-- [ ] execute test after training
+- [ ] execute demo test after training
+- [ ] add final performance metric
 
 ## Done:
+- [x] implement minibatch
 - [x] a generative demo
 - [x] add validation (once an hour or so)
 - [x] add accuracy metric, use precision/recall.
