@@ -1,6 +1,6 @@
 # Learning Auto-Punctuation by Reading Engadget Articles 
 
-[![DOI](https://zenodo.org/badge/86387963.svg)](https://zenodo.org/badge/latestdoi/86387963) [![](https://img.shields.io/badge/link_on-GitHub-brightgreen.svg?style=flat-square)](https://github.com/episodeyang/deep-auto-punctuation)
+[![DOI](https://zenodo.org/badge/86387963.svg)](https://zenodo.org/badge/latestdoi/86387963) [![](https://img.shields.io/badge/link_on-GitHub-brightgreen.svg?style=flat-square)](https://github.com/episodeyang/deep-auto-punctuation#learning-auto-punctuation-by-reading-engadget-articles)
 
 ## Overview
 
