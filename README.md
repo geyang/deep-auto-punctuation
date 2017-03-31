@@ -46,7 +46,7 @@ After 24 epochs of training, the network achieves the following performance on t
     Key:   ?	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
     Key:   !	Prec:   0.0%	Recall:   0.0%	F-Score:   N/A
 ```
-As a frist attempt, the performance is pretty good! Especially since I didn't fine train with a smaller step size afterward, and the engadget dataset used here is small in size (4MB total).
+As a frist attempt, the performance is pretty good! Especially since I did not fine tune with a smaller step size afterward, and the Engadget dataset used here is small in size (4MB total).
 
 Double the training gives a small improvement. 
 
