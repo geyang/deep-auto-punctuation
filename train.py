@@ -3,7 +3,10 @@ import visdom
 vis = visdom.Visdom()
 vis.env = "deep-punc-experiment"
 
-emb = None, opt = None, smx = None, lss = None
+emb = None
+opt = None
+smx = None
+lss = None
 
 
 def plot_progress(embeded, output, softmax, losses):
