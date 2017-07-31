@@ -54,7 +54,7 @@ for epoch_num in range(24):
     for batch_ind, (max_len, sources) in enumerate(tqdm(data.batch_gen(data.train_gen(), batch_size))):
 
         # prepare the input and output chunks
-        input_srcs = [];
+        input_srcs = []
         punc_targs = []
         for chunk in sources:
             input_source, punctuation_target = data.extract_punc(chunk, egdt.char2vec.chars, egdt.output_char2vec.chars)
@@ -70,9 +70,7 @@ for epoch_num in range(24):
             try:
                 egdt.forward(input_, target_)
                 egdt.descent()
-
             except KeyError:
-                print(source)
                 raise KeyError
 
         if batch_ind % 25 == 24:
