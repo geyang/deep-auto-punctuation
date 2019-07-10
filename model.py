@@ -28,8 +28,7 @@ class GruRNN(nn.Module):
     def forward(self, x, hidden):
         embeded = x
         gru_output, hidden = self.gru(embeded, hidden.view(self.layers * self.bi_mul, -1, self.hidden_size))
-        gru_output.contiguous()
-        output = self.decoder(gru_output.view(-1, self.hidden_size * self.bi_mul))
+        output = self.decoder(gru_output.contiguous().view(-1, self.hidden_size * self.bi_mul))
         return output.view(self.batch_size, -1, self.output_size), hidden
 
     def init_hidden(self, random=False):
@@ -100,7 +99,7 @@ class Engadget():
 
         self.loss.backward()
         self.optimizer.step()
-        self.losses.append(self.loss.cpu().data.numpy()[0])
+        self.losses.append(self.loss.cpu().data.numpy())
         self.reset_loss()
 
     def embed(self, input_data):
