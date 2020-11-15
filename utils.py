@@ -1,3 +1,4 @@
+#encoding: utf-8
 import torch
 from termcolor import cprint, colored as c
 
